@@ -20,7 +20,7 @@ if( isset($_GET['message'])){
             $result = ['response_message' => $response_message];
             echo json_encode($result);
         }else{
-            echo json_encode(["response_message" => "what!"]);
+            echo json_encode(["response_message" => "I can't catch your opinion please explain again!"]);
 
         }
     }else{
@@ -29,4 +29,4 @@ if( isset($_GET['message'])){
 }
 
 
-?>
+

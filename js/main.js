@@ -4,7 +4,9 @@ var chatContainer = document.getElementById('chatContainer');
 var httpRequest = new XMLHttpRequest();
 
 var user = {meals:[]};
-var phpWords = ["php", "web", "hi", "yo", "hey"];
+var phpWords = ["php", "web", "I wanna create php project", "I wanna create website", "I want to create website"];
+
+
 var isTechnologyMenu = false;
 let menu = [
     {},
@@ -15,11 +17,6 @@ let menu = [
 
 setTimeout(function(){
     chatbotSendMessage("Hi, welcome to Assistant of Technology");
-    
-    
-        // chatbotSendMessage("please choose your option : (number)");
-        // showMenu();
-        
     
     
 },500);
@@ -59,14 +56,16 @@ function server_response(){
         messageElement.classList.add('w-50');
         messageElement.classList.add('float-left');
         messageElement.classList.add('shadow-sm');
+        messageElement.style.backgroundColor = "grey";
         messageElement.style.margin = "10px";
         messageElement.style.padding = "5px";
 
         messageElement.innerHTML = "<span>You: </span>" + 
-        "<span style="+"margin-top:10px; padding:10px"+">" + result.response_message + "</span>";
+        "<span style="+"margin-top:10px; padding:10px;"+">" + result.response_message + "</span>";
 
         messageElement.animate([{easing:"ease-in", opacity:0.4},{opacity:1}], {duration:500})
         chatContainer.appendChild(messageElement);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
          
     }
 }
@@ -106,7 +105,7 @@ sendBtn.addEventListener('click', function(e){
         let messageText = textbox.value;
         sendMessage(messageText);
         textbox.value = "";
-        phpDisplay(messageText);
+        phpFindWord(messageText);
         if(isTechnologyMenu)
         {
             technologyResponseToUser(messageText);
@@ -114,7 +113,11 @@ sendBtn.addEventListener('click', function(e){
     }
     
 });
-function phpDisplay(messageText)
+
+
+
+/*
+function phpFindWord(messageText)
 {
     
     if(phpWords.some((h) => messageText.includes(h.trim().toLowerCase())))
@@ -123,7 +126,13 @@ function phpDisplay(messageText)
         }
 }
 
+*/
 
+
+
+
+
+/*
 function technologyResponseToUser(messageText)
 {
      //get number from user
@@ -144,11 +153,20 @@ function technologyResponseToUser(messageText)
             chatbotSendMessage("<br><img style='width:100px;' src=" + menu[3].img + "/>");
             user.meals.push(menu[3]);
             break;
+        case x:
+             break;
         default:
             chatbotSendMessage("please choose a valid number");
             break;
      }
 }
+
+
+
+
+
+
+
 function showMenu()
 {
     var messageElement = document.createElement('div');
@@ -167,6 +185,7 @@ function showMenu()
                 "<img style='width:100px; margin-left:20px' src="+menu[i].img+"/>" +
                 "<br>";   
     }
+    messageElement.innerHTML += "<span> If you want to quit, just enter 'x' </span>";
     messageElement.animate([{easing:"ease-in", opacity:0.4},{opacity:1}], {duration:500})
     chatContainer.appendChild(messageElement);
-}
+}*/
